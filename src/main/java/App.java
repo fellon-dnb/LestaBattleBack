@@ -4,11 +4,9 @@
 public class App {
     public static void main(String[] args) {
         System.out.println("Hello player!");
-        Weapon sword = new Weapon("Sword", 10, DamageType.SLASHING);
-        Weapon axe = new Weapon("Axe", 15, DamageType.SLASHING);
-        // System.out.println(axe);
-        //System.out.println(sword);
-        Hero hero = new Hero("Conan", 100, 10, CharacterClass.BARBARIAN, axe);
-    System.out.println(hero);
+Hero hero = HeroFactory.createHero("Player 1", CharacterClass.ROGUE);
+Hero hero1 = HeroFactory.createHero("Player 2", CharacterClass.BARBARIAN);
+        System.out.println(hero);
+        System.out.println(hero1);
     }
 }

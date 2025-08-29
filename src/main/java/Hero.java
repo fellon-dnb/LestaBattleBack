@@ -7,8 +7,10 @@ import lombok.ToString;
 @ToString
 public class Hero {
    private String name;
-   private int health;
-   private int strength;
+   private final int level;
+   private final Attributes attributes;
+   private int maxHealth;
+   private int currentHealth;
    private CharacterClass characterClass;
    private Weapon weapon;
 }
