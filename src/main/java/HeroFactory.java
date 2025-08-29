@@ -3,6 +3,7 @@ import java.util.Random;
 public class HeroFactory {
     private static int randomTo3() {
         Random random = new Random();
+
         int randomNumber = random.nextInt(4);
         return randomNumber;
     }
