@@ -4,7 +4,9 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum DamageType {
-    SLASHING ("рубящий") ,BlUDGEONING ("дробящий") ,PIERCING ("колящий");
-    public final String DamageType;
+    SLASHING ("рубящий") ,
+    BLUDGEONING ("дробящий") ,
+    PIERCING ("колящий");
+    public final String dysplayName;
     }
 

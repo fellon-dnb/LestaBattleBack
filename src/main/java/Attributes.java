@@ -1,10 +1,11 @@
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
 
-@Getter
+@Data
 @AllArgsConstructor
-@ToString
+
 public class Attributes {
     private  int  strength; //cила
     private  int  agility;  //ловкость

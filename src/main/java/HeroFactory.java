@@ -9,7 +9,12 @@ public class HeroFactory {
     }
 
     public static Hero createHero(String name, CharacterClass clazz) {
-        Attributes attributes = new Attributes(randomTo3(), randomTo3(), randomTo3());
+        Attributes attributes = new Attributes(
+                randomTo3(),
+                randomTo3(),
+                randomTo3()
+        );
+
         int maxHealth = clazz.getStartHealth() + attributes.getEndurance();
         Weapon weapon = clazz.getStartWeapon().toWeapon();
         return new Hero(
