@@ -5,7 +5,7 @@ import lombok.ToString;
 @Getter
 @AllArgsConstructor
 @ToString
-public class Hero {
+public class Hero implements HasCombatStats {
    private String name;
    private final int level;
    private final Attributes attributes;
@@ -13,4 +13,9 @@ public class Hero {
    private int currentHealth;
    private CharacterClass characterClass;
    private Weapon weapon;
+
+   @Override
+   public void setCurrentHealth(int currentHealth) {
+      this.currentHealth = currentHealth;
+   }
 }
