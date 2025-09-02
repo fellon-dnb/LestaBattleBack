@@ -1,3 +1,5 @@
+package com.fellon.battle.model;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
