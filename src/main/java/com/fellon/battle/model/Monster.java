@@ -1,7 +1,9 @@
+package com.fellon.battle.model;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
+import org.w3c.dom.Attr;
 
 @Data
 @AllArgsConstructor
@@ -12,15 +14,9 @@ public class Monster implements HasCombatStats {
     private int maxHealth;
     private int currentHealth;
     private int damage;
-    private int strength;
-    private int agility;
-    private int endurance;
+    private Attributes attributes;
 
     private Weapon weapon;
     private Weapon presentedWeapon;
 
-    @Override
-    public Attributes getAttributes() {
-        return new Attributes(strength, agility, endurance);
-    }
 }

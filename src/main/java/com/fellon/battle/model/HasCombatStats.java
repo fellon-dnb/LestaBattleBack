@@ -1,3 +1,5 @@
+package com.fellon.battle.model;
+
 public interface HasCombatStats {
     String getName();
     Attributes getAttributes();
