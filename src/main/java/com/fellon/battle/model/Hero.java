@@ -13,7 +13,7 @@ public class Hero implements HasCombatStats {
    private final Attributes attributes;
    private int maxHealth;
    private int currentHealth;
-   private CharacterClass characterClass;
+   private CharacterClass сurrentClass;
    private Weapon weapon;
 
    @Override
