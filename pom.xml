@@ -98,7 +98,7 @@
                             <archive>
                                 <manifest>
                                     <addClasspath/>
-                                    <mainClass>com.ancevt.Application</mainClass>
+                                    <mainClass>com.fellon.battle.BattleApplication</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>
