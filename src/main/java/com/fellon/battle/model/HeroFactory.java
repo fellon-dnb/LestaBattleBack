@@ -1,5 +1,7 @@
 package com.fellon.battle.model;
 
+import com.ancevt.d2d2.scene.Node;
+
 import java.util.Random;
 
 public class HeroFactory {
@@ -10,7 +12,7 @@ public class HeroFactory {
         return randomNumber;
     }
 
-    public static Hero createHero(String name, CharacterClass clazz) {
+    public static Hero createHero(String name, CharacterClass clazz ) {
         Attributes attributes = new Attributes(
                 randomTo3(),
                 randomTo3(),
@@ -19,14 +21,15 @@ public class HeroFactory {
 
         int maxHealth = clazz.getStartHealth() + attributes.getEndurance();
         Weapon weapon = clazz.getStartWeapon().toWeapon();
-        return new Hero(
+        return new Hero (
                 name,
                 1,
                 attributes,
                 maxHealth,
                 maxHealth,
                 clazz,
-                weapon
+                weapon, null
+
         );
     }
 }

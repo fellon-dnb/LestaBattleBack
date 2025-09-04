@@ -1,8 +1,7 @@
 package com.fellon.battle.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.ancevt.d2d2.scene.Node;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
@@ -14,6 +13,9 @@ public class Monster implements HasCombatStats {
     private int currentHealth;
     private int damage;
     private Attributes attributes;
+    @Setter
+    @Getter
+    private Node view;
 
     private Weapon weapon;
     private Weapon presentedWeapon;

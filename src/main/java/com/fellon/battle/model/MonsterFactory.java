@@ -1,5 +1,7 @@
 package com.fellon.battle.model;
 
+import com.ancevt.d2d2.scene.Node;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class MonsterFactory {
@@ -20,12 +22,12 @@ public class MonsterFactory {
     private static Monster goblin() {
         return new Monster(
                 "Гоблин",
-                5,
-                5,
+                10,
+                10,
                 2,
-                new Attributes(1, 1, 1),
-                WeaponType.DAGGER.toWeapon(),
-                WeaponType.DAGGER.toWeapon()
+                new Attributes(2, 1, 2), null,
+                WeaponType.SWORD.toWeapon(),
+                WeaponType.SWORD.toWeapon()
         );
     }
 
@@ -35,7 +37,7 @@ public class MonsterFactory {
                 10,
                 10,
                 2,
-                new Attributes(2, 2, 1),
+                new Attributes(2, 2, 1),  null,
                 WeaponType.CLUB.toWeapon(),
                 WeaponType.CLUB.toWeapon()
         );
@@ -43,13 +45,14 @@ public class MonsterFactory {
 
     private static Monster slime() {
         return new Monster(
-                "Слизень",
+                "Слайм",
                 8,
                 8,
                 1,
-                new Attributes(3, 1, 2),
-                WeaponType.SPEAR.toWeapon(),
-                WeaponType.SPEAR.toWeapon()
+                new Attributes(1, 2, 1),
+                null,
+                WeaponType.CLUB.toWeapon(),
+                WeaponType.CLUB.toWeapon()
         );
     }
 
@@ -59,7 +62,7 @@ public class MonsterFactory {
                 20,
                 20,
                 4,
-                new Attributes(3, 3, 3),
+                new Attributes(3, 3, 3), null,
                 WeaponType.LEGENDARY_SWORD.toWeapon(),
                 WeaponType.LEGENDARY_SWORD.toWeapon()
         );
@@ -71,7 +74,7 @@ public class MonsterFactory {
                 10,
                 10,
                 1,
-                new Attributes(3, 1, 3),
+                new Attributes(3, 1, 3), null,
                 WeaponType.AXE.toWeapon(),
                 WeaponType.AXE.toWeapon()
         );
@@ -83,7 +86,7 @@ public class MonsterFactory {
                 20,
                 20,
                 4,
-                new Attributes(3, 3, 3),
+                new Attributes(3, 3, 3), null,
                 WeaponType.LEGENDARY_SWORD.toWeapon(),
                 WeaponType.LEGENDARY_SWORD.toWeapon()
         );
