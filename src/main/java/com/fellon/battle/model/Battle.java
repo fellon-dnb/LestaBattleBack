@@ -10,6 +10,7 @@ public class Battle {
     private final Monster monster;
     private Winner winner;
     private final List<BattleListener> listeners = new ArrayList<>();
+    private int turn = 1;
 
     public Battle(Hero hero, Monster monster) {
         this.hero = hero;
@@ -30,8 +31,6 @@ public class Battle {
 
         HasCombatStats attacker;
         HasCombatStats defender;
-
-        int turn = 1;
 
         if (hero.getAttributes().getAgility() >= monster.getAttributes().getAgility()) {
             attacker = hero;
@@ -56,7 +55,7 @@ public class Battle {
 
             if (defender.getCurrentHealth() <= 0) break;
 
-            // Поменять местами атакующего и защищающегося
+            // Поменять местами
             HasCombatStats temp = attacker;
             attacker = defender;
             defender = temp;
@@ -85,16 +84,61 @@ public class Battle {
         int base = attacker.getWeapon().getDamage() + attacker.getAttributes().getStrength();
         int finalDamage = base;
 
-        // Пример: скелет получает двойной урон от дубины
-        if (defender instanceof Monster) {
-            Monster m = (Monster) defender;
+        //спецэффекты атакующего класса
+        if (attacker instanceof Hero heroAttacker) {
+            CharacterClass currentClass = heroAttacker.getСurrentClass();
+
+            switch (currentClass) {
+                case WARRIOR -> {
+                    // Порыв к действию
+                    if (turn == 1 && attacker == heroAttacker) {
+                        System.out.println("🛡 Воин использует Порыв к действию! Урон удваивается.");
+                        finalDamage *= 2;
+                    }
+                }
+                case ROGUE -> {
+                    // Скрытая атака
+                    if (attacker.getAttributes().getAgility() > defender.getAttributes().getAgility()) {
+                        System.out.println("🗡 Разбойник использует Скрытую атаку! +1 урон.");
+                        finalDamage += 1;
+                    }
+                }
+                case BARBARIAN -> {
+                    // Ярость
+                    if (turn <= 3) {
+                        System.out.println("🔥 Варвар в ярости! +2 урона.");
+                        finalDamage += 2;
+                    } else {
+                        System.out.println("😴 Ярость прошла. -1 урон.");
+                        finalDamage -= 1;
+                    }
+                }
+            }
+        }
+
+        // Эффекты защиты целей
+        if (defender instanceof Hero heroDefender) {
+            CharacterClass currentClass = heroDefender.getСurrentClass();
+
+            if (currentClass == CharacterClass.WARRIOR) {
+                if (heroDefender.getAttributes().getStrength() > attacker.getAttributes().getStrength()) {
+                    System.out.println("🛡 Воин активирует Щит! -3 к получаемому урону.");
+                    finalDamage = Math.max(0, finalDamage - 3);
+                }
+            }
+        }
+
+        //  Уязвимости монстров
+        if (defender instanceof Monster m) {
             String name = m.getName().toLowerCase();
-            if (name.contains("скелет") && attacker.getWeapon().getDamageType().toString().equals("BLUDGEONING")) {
+            if (name.contains("скелет") && attacker.getWeapon().getDamageType() == DamageType.BLUDGEONING) {
+                System.out.println("💀 Скелет уязвим к дробящему урону! Урон x2.");
                 finalDamage *= 2;
             }
 
-            if (name.contains("слайм") && attacker.getWeapon().getDamageType().toString().equals("SLASHING")) {
-                finalDamage = attacker.getAttributes().getStrength(); // режущий не работает
+            if (name.contains("слайм") && attacker.getWeapon().getDamageType() == DamageType.SLASHING) {
+                System.out.println("🧪 Слайм невосприимчив к рубящему урону! Считается только сила.");
+                finalDamage = attacker.getAttributes().getStrength();
             }
         }
 
