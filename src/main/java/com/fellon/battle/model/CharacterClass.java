@@ -14,4 +14,12 @@ public enum CharacterClass {
     private final String displayName;
     private final int startHealth;
     private final WeaponType startWeapon;
+
+    public int getHealthPerLevel() {
+        return switch (this){
+            case ROGUE -> 4;
+            case WARRIOR -> 5;
+            case BARBARIAN -> 6;
+        };
+    }
 }

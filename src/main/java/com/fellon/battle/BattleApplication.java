@@ -10,13 +10,8 @@ import com.ancevt.d2d2.log.Log;
 public class BattleApplication implements Application {
     public static void main(String[] args) {
         /*
-        Hero hero = HeroFactory.createHero("Player 1", CharacterClass.ROGUE);
-        System.out.println(hero);
 
-        Monster monster = MonsterFactory.createRandomMonster();
-        System.out.println(monster);
-        */
-
+ */
         D2D2.init(new BattleApplication(),
                 new ApplicationConfig()
                         .width(1000)
@@ -24,7 +19,6 @@ public class BattleApplication implements Application {
                         .args(args)
         );
     }
-
     private BattleEngine battleEngine;
 
 
@@ -39,8 +33,10 @@ public class BattleApplication implements Application {
         context.stage().addChild(new FpsMeter());
     }
 
-    @Override
     public void stop() {
-        // TODO: save stats
+
     }
 }
+
+
+

@@ -28,7 +28,8 @@ public class HeroFactory {
                 maxHealth,
                 maxHealth,
                 clazz,
-                weapon, null
+                weapon,
+                null
 
         );
     }
